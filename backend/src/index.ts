@@ -1,12 +1,24 @@
 import dotenv from "dotenv"
 dotenv.config()
 
+import express from "express"
+import { createServer } from "http"
 import { WebSocketServer, WebSocket } from "ws";
 import { generateRoomCode } from "./roomGenerator";
 
+const app = express()
 const PORT = Number(process.env.PORT) || 5050
-console.log("PORT -> ", PORT)
-const wss = new WebSocketServer({port: PORT})
+
+// test route 
+app.get("/", (req, res) => {
+    res.send("Websocket server is running.")
+})
+
+// create HTTP server from Express app
+const server = createServer(app)
+
+// attach websocket server to HTTP server
+const wss = new WebSocketServer({ server })
 
 // configuration
 const ROOM_CLEANUP_TIMEOUT = 2 * 60 * 1000
@@ -373,4 +385,8 @@ wss.on("connection", (socket) => {
     socket.on("message", (msg) => {
         handleMessage(socket, msg.toString())
     })
+})
+
+server.listen(PORT, () => {
+    console.log(`Server running at PORT ${PORT}`)
 })
