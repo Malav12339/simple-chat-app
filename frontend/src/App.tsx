@@ -28,9 +28,6 @@ function App() {
       setIsConnected(true)
     })
 
-    ws.addEventListener("message", (event) => {
-    })
-
     ws.addEventListener("close", () => {
       if(!hasShownDisconnectedRef.current) {
         toast.error("Connection lost. Trying to reconnect...")
