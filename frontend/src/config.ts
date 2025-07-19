@@ -1,0 +1,1 @@
+export const BACKEND_URL = "wss://simple-chat-app-ciy3.onrender.com"

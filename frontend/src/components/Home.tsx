@@ -39,12 +39,9 @@ function Home({socket, isConnected} : {
     }
 
     setLoading(true)
-    setTimeout(() => {
-      socket.send(JSON.stringify({
-        action: "create room"
-      }))
-    }, 2000)
-
+    socket.send(JSON.stringify({
+      action: "create room"
+    }))
   }
 
   function handleRoomJoin() {

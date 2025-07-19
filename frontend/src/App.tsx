@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./components/Home";
 import ToggleTheme from "./components/ToggleTheme";
 import { toast, Toaster } from "sonner";
+import { BACKEND_URL } from "./config";
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -15,7 +16,7 @@ function App() {
   // create socket 
   function createSocket() {
     socketRef.current?.close()
-    const ws = new WebSocket("ws://localhost:8080")
+    const ws = new WebSocket(BACKEND_URL)
 
     ws.addEventListener("open", () => {
       toast.success("connected to server")
