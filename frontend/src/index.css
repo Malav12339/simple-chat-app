@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&family=Share+Tech+Mono&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-mono: "Share Tech Mono";
+    --font-msgFont: "Intel One Mono";
+    --color-lightGray: #F5F5F5;
+    --color-darkGray: #262626
+}
