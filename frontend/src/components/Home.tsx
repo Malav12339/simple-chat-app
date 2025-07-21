@@ -114,7 +114,7 @@ function Home({socket, isConnected} : {
       }
 
       if(msg.action === "user joined" || msg.action === "user left") {
-        toast.info(msg.action)
+        toast.info(msg.message)
         setUserCount(msg.userCount)
       }
     }
